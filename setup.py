@@ -6,7 +6,7 @@ import sys
 
 import setuptools  # type: ignore
 from setuptools.command import build_ext  # type: ignore
-from setuptools.extern.packaging import version  # type: ignore
+# from setuptools.extern.packaging import version  # type: ignore
 
 
 __version__ = "1.0.3"
@@ -32,11 +32,11 @@ class CMakeBuild(build_ext.build_ext):
             m = re.search(r"version\s*([\d.]+)", out.decode())
             if m is None:
                 raise RuntimeError("Could not find CMake version.")
-            cmake_version = version.Version(m.group(1))
-            if cmake_version < version.Version("3.13.0"):
-                raise RuntimeError(
-                    "CMake >= 3.13.0 is required. Install the latest CMake with 'pip install cmake'."
-                )
+            # cmake_version = version.Version(m.group(1))
+            # if cmake_version < version.Version("3.13.0"):
+            #     raise RuntimeError(
+            #         "CMake >= 3.13.0 is required. Install the latest CMake with 'pip install cmake'."
+            #     )
 
         cmake_extensions = [e for e in self.extensions if isinstance(e, CMakeExtension)]
         for extension in cmake_extensions:
