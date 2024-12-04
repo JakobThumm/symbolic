@@ -71,6 +71,9 @@ class CMakeBuild(build_ext.build_ext):
             "-DBUILD_PYTHON=ON",
             "-DPYBIND11_PYTHON_VERSION=" + python_version,
             "-DCMAKE_BUILD_TYPE=" + build_type,
+            "-DCMAKE_CXX_STANDARD=17",
+            "-DCMAKE_CXX_STANDARD_REQUIRED=ON",
+            "-DCMAKE_CXX_EXTENSIONS=OFF"
         ]
         if not self.inplace:
             # Use relative paths for install rpath.
